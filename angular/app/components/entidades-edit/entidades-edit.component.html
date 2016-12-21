@@ -1,0 +1,38 @@
+<section class="content-header">
+  <h1>Entidades <small>Módulo de Edición de Entidades</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.entidadeslist">Lista de Entidades</a></li>
+    <li class="active">Editar Entidad</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar Entidad</h3>
+        </div>
+        <form class="form-horizontal" name="entidadForm" ng-submit="vm.save(entidadForm.$valid, entidadForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': entidadForm.rsocial.$invalid && ( vm.formSubmitted || entidadForm.rsocial.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Razón Social</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="vm.entidad.data.razonSocial" name="rsocial" placeholder="Razón Social" required>
+                <p ng-show="entidadForm.rsocial.$error.required && ( vm.formSubmitted || entidadForm.rsocial.$touched)" class="help-block">Razón Social es obligatorio.</p>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.entidadeslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

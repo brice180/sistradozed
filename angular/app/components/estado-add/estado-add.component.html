@@ -1,0 +1,54 @@
+<section class="content-header">
+  <h1>Expedientes <small>Modulo de Registro de Estados</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.estadolist">Lista de Estados</a></li>
+    <li class="active">Agregar nuevo Estado</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar nuevo Estado</h3>
+        </div>
+        <form class="form-horizontal" name="estadoForm" ng-submit="vm.save(estadoForm.$valid, estadoForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': estadoForm.desc.$invalid && ( vm.formSubmitted || estadoForm.desc.$touched) }">
+              <label for="inputPassword3" class="col-sm-2 control-label">Descripción</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="vm.desc" name="desc" placeholder="Descripción" required>
+                <p ng-show="estadoForm.desc.$error.required && ( vm.formSubmitted || estadoForm.desc.$touched)" class="help-block">Descripción es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': estadoForm.color.$invalid && ( vm.formSubmitted || estadoForm.color.$touched) }">
+              <label for="inputPassword3" class="col-sm-2 control-label">Color</label>
+              <div class="col-sm-10">
+               <input type="text" class="form-control" ng-model="vm.color" name="color" placeholder="Color" required>
+                 
+                <!--  <select class="form-control">
+                    <option>option 1</option>
+                    <option>option 2</option>
+                    <option>option 3</option>
+                    <option>option 4</option>
+                    <option>option 5</option>
+                  </select>-->
+                
+                <p ng-show="estadoForm.color.$error.required && ( vm.formSubmitted || estadoForm.color.$touched)" class="help-block">Color es obligatorio.</p>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.estadolist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+<section class="content-header">
+  <h1>Remitentes <small>Modulo de edición de Remitentes</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.remitenteslist">Lista de Remitentes</a></li>
+    <li class="active">Editar Remitente</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar Remitente</h3>
+        </div>
+        <div class="precarga" ng-hide="vm.remitente.data">
+         <i class="fa fa-refresh fa-spin fa-5x"></i>
+        </div>
+        <form class="form-horizontal" name="remitenteForm" ng-submit="vm.save(remitenteForm.$valid, remitenteForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.tiporemitente_id.$invalid && ( vm.formSubmitted || remitenteForm.tiporemitente_id.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Tipo Person</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="tiporemitente_id" ng-model="vm.remitente.data.tiporemitente_id" ng-options="tr.id as tr.descripcion for tr in tipor" required>
+                </select>
+                <p ng-show="remitenteForm.tiporemitente_id.$error.required && ( vm.formSubmitted || remitenteForm.tiporemitente_id.$touched)" class="help-block">Es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.tipodoc_id.$invalid && ( vm.formSubmitted || remitenteForm.tipodoc_id.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Tipo Documento</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="tipodoc_id" ng-model="vm.remitente.data.tipodoc_id" ng-options="td.id as td.descripcion for td in tipodocs" required>
+                </select>
+                <p ng-show="remitenteForm.tipodoc_id.$error.required && ( vm.formSubmitted || remitenteForm.tipodoc_id.$touched)" class="help-block">Es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.numdoc.$invalid && ( vm.formSubmitted || remitenteForm.numdoc.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Número de Doc.</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="vm.remitente.data.numdoc" name="numdoc" placeholder="Número de documento" required>
+                <p ng-show="remitenteForm.numdoc.$error.required && ( vm.formSubmitted || remitenteForm.numdoc.$touched)" class="help-block">Es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.nombres.$invalid && ( vm.formSubmitted || remitenteForm.nombres.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Nombres</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="vm.remitente.data.nombres" name="nombres" placeholder="Nombres" required>
+                <p ng-show="remitenteForm.nombres.$error.required && ( vm.formSubmitted || remitenteForm.nombres.$touched)" class="help-block">Nombre es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.apellidos.$invalid && ( vm.formSubmitted || remitenteForm.apellidos.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Apellidos</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="vm.remitente.data.apellidos" name="apellidos" placeholder="Apellidos" required>
+                <p ng-show="remitenteForm.apellidos.$error.required && ( vm.formSubmitted || remitenteForm.apellidos.$touched)" class="help-block">Apellidos es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.entidad_id.$invalid && ( vm.formSubmitted || remitenteForm.entidad_id.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Entidad</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="entidad_id" ng-model="vm.remitente.data.entidad_id" ng-options="et.id as et.razonSocial for et in entis" required>
+                </select>
+                <p ng-show="remitenteForm.entidad_id.$error.required && ( vm.formSubmitted || remitenteForm.entidad_id.$touched)" class="help-block">Es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.razonSocial.$invalid && ( vm.formSubmitted || remitenteForm.razonSocial.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Razón Social</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="vm.remitente.data.razonSocial" name="razonSocial" placeholder="Razón Social">
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.remitenteslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

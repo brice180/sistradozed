@@ -1,0 +1,113 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="{{vm.userData.avatar}}" class="img-circle" alt="User Image" onError="this.src='//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16'">
+      </div>
+      <div class="pull-left info">
+        <p>{{vm.userData.name | capitalize}}</p>
+        <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <ul class="sidebar-menu">
+      <li class="header">Navegación Principal</li>
+      <li>
+        <a ui-sref='app.landing'>
+          <i class="fa fa-dashboard"></i> <span>Principal</span>
+        </a>
+      </li>
+      <li class="treeview" ng-show="vm.can('manage.expedientes')">
+        <a href="javascript:void(0)">
+          <i class="fa fa-unlink"></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.expdtrecibidoslist'><i class="fa fa-envelope-o"></i> <span>Recibidos</span>
+          <small class="label pull-right bg-yellow">12</small></a></li>
+          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.userlist'><i class="fa fa-paper-plane"></i> <span>Derivados</span></a></li>
+          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.userlist'><i class="fa  fa-list-alt"></i> <span>Consultas</span></a></li>
+        </ul>
+      </li>
+      <li class="treeview" ng-show="vm.can('manage.roles') || vm.can('manage.permissions')">
+        <a href="javascript:void(0)">
+          <i class="fa fa-cog"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">   
+
+          <li class="treeview">
+            <a href="javascript:void(0)">
+              <i class="fa fa-industry"></i> <span>ZED Paita</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.oficinaslist'><i class="fa fa-building-o"></i> <span>Oficinas</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.cargoslist'><i class="fa fa-briefcase"></i> <span>Cargos</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.jefaturaslist'><i class="fa fa-black-tie"></i> <span>Empleados</span></a></li>
+            </ul>
+          </li>
+
+           <li class="treeview">
+            <a href="javascript:void(0)">
+              <i class="fa fa-globe"></i> <span>Externos</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.remitenteslist'><i class="fa fa-users"></i> <span>Remitentes</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.entidadeslist'><i class="fa fa-institution"></i> <span>Entidades</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.tipodoclist'><i class="fa fa-credit-card"></i> <span>Tipo Documentos</span></a></li>
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="javascript:void(0)">
+              <i class="fa fa-chain-broken"></i> <span>Expediente</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.estadolist'><i class="fa fa-minus-square"></i> <span>Estados</span></a></li>
+            </ul>
+          </li>    
+
+          <li class="treeview">
+            <a href="javascript:void(0)">
+              <i class="fa fa-clipboard"></i> <span>Tupa</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-list"></i> <span>Procedimientos</span></a></li>
+              <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-list-ol"></i> <span>Requisitos</span></a></li>
+              <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-indent"></i> <span>Procedimientos - Requisitos</span></a></li>
+              <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-exchange"></i> <span>Rutas</span></a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="javascript:void(0)">
+              <i class="fa fa-users"></i><span>Usuarios</span>
+              <i class=" fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+              <li ng-show="vm.can('manage.roles')"><a ui-sref='app.userroles'><i class="fa fa-eject"></i> <span>Roles</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.userpermissions'><i class="fa fa-unlock-alt"></i> <span>Permisos</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!--<li>
+        <a ui-sref="app.widgets">
+          <i class="fa fa-th"></i> <span>Widgets</span>
+          <small class="label pull-right bg-green">new</small>
+        </a>
+      </li>-->
+    </ul>
+  </section>
+</aside>

@@ -1,0 +1,84 @@
+<section class="content-header">
+  <h1>Usuarios<small>Modulo de Registro de Usuarios</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.userlist">Lista de Usuarios</a></li>
+    <li class="active">Agregar nuevo Usuario</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar nuevo Usuario</h3>
+        </div>
+        <form class="form-horizontal" name="vm.registerForm" ng-submit="vm.register(vm.registerForm.$valid)" novalidate>
+        <div class="box-body">
+          <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+            <h4>{{alert.title}}</h4>
+            <p>{{alert.msg}}</p>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': vm.registerForm.name.$invalid && ( vm.formSubmitted || vm.registerForm.name.$touched) }">
+            <label for="inputPassword3" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Nombre Completo" ng-model="vm.name" name="name" ng-maxlength="30" required>
+              <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              <p ng-show="vm.registerForm.name.$error.required && ( vm.formSubmitted || vm.registerForm.name.$touched)" class="help-block">Nombre es obligatorio.</p>
+              <p ng-show="vm.registerForm.name.$error.maxlength" class="help-block">Nombre demasiado largo</p>
+              <p ng-show="vm.registerForm.name.$invalid && (vm.formSubmitted || vm.errors.name)" class="help-block">{{vm.errors.name}}</p>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': vm.registerForm.email.$invalid && ( vm.formSubmitted || vm.registerForm.email.$touched) }">
+            <label for="inputPassword3" class="col-sm-3 control-label">Correo</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" placeholder="Correo" ng-model="vm.email" name="email" ng-maxlength="30" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <p ng-show="vm.registerForm.email.$invalid && (vm.formSubmitted || vm.errors.email)" class="help-block">{{vm.errors.email}}</p>
+              <p ng-show="vm.registerForm.email.$error.required && ( vm.formSubmitted || vm.registerForm.email.$touched)" class="help-block">Email es obligatorio.</p>
+              <p ng-show="vm.registerForm.email.$error.email && vm.registerForm.email.$touched" class="help-block">Este no es un correo válido.</p>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': vm.registerForm.dni.$invalid && ( vm.formSubmitted || vm.registerForm.dni.$touched) }">
+            <label for="inputPassword3" class="col-sm-3 control-label">DNI</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Número de DNI" ng-model="vm.dni" name="dni" ng-maxlength="8" ng-pattern="/^[0-9]{8}$/" required>
+              <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
+              <p ng-show="vm.registerForm.dni.$invalid && (vm.formSubmitted || vm.errors.dni)" class="help-block">{{vm.errors.dni}}</p>
+              <p ng-show="vm.registerForm.dni.$error.required && ( vm.formSubmitted || vm.registerForm.dni.$touched)" class="help-block">DNI es obligatorio.</p>
+              <p ng-show="vm.registerForm.dni.$error.pattern && vm.registerForm.dni.$touched" class="help-block">DNI incorrecto, sólo números de 8 caracteres.</p>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': vm.registerForm.password.$invalid && ( vm.formSubmitted || vm.registerForm.password.$touched) }">
+          <label for="inputPassword3" class="col-sm-3 control-label">Contraseña</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" placeholder="Contraseña" ng-model="vm.password" name="password" ng-minlength="8" ng-maxlength="50" required>
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <p ng-show="vm.registerForm.password.$error.required && ( vm.formSubmitted || vm.registerForm.password.$touched)" class="help-block">Contraseña es obligatoria.</p>
+              <p ng-show="vm.registerForm.password.$error.maxlength" class="help-block">Contraseña demasiado larga.</p>
+              <p ng-show="vm.registerForm.password.$invalid && vm.registerForm.password.$error.minlength && vm.registerForm.password.$touched" class="help-block">Contraseña demasiado corta, Por favor ingresa mas de 8 caracteres.</p>
+              <p ng-show="vm.registerForm.password.$invalid && (vm.formSubmitted || vm.errors.password)" class="help-block">{{vm.errors.password}}</p>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': vm.registerForm.password_confirmation.$invalid && ( vm.formSubmitted || vm.registerForm.password_confirmation.$touched) }">
+          <label for="inputPassword3" class="col-sm-3 control-label">Repita Contraseña</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" placeholder="Confirmación de contraseña" ng-model="vm.password_confirmation" password-verify="vm.password" name="password_confirmation" ng-minlength="8" ng-maxlength="50" required>
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <p ng-show="vm.registerForm.password_confirmation.$error.required && ( vm.formSubmitted || vm.registerForm.password_confirmation.$touched)" class="help-block">Es obligatorio confirmar su contraseña.</p>
+              <p ng-show="vm.registerForm.password_confirmation.$error.passwordVerify && ( vm.formSubmitted || vm.registerForm.password_confirmation.$touched)" class="help-block">Contraseñas no coinciden.</p>
+              <p ng-show="vm.registerForm.password_confirmation.$error.maxlength" class="help-block">Demasiado larga.</p>
+              <p ng-show="vm.registerForm.password_confirmation.$invalid && vm.registerForm.password_confirmation.$error.minlength && vm.registerForm.password_confirmation.$touched" class="help-block">La confirmación de Contraseña es demasiado corta, Por favor ingresa mas de 8 caracteres..</p>
+              <p ng-show="vm.registerForm.password_confirmation.$invalid && (vm.formSubmitted || vm.errors.password_confirmation)" class="help-block">{{vm.errors.password_confirmation}}</p>
+            </div>
+          </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.userlist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

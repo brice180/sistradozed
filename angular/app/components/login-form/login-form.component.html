@@ -1,0 +1,51 @@
+<form ng-submit="vm.login()" method="post" name="vm.loginForm">
+  <div class="callout callout-danger" ng-if="vm.loginfailederror">
+    <h4>Intento fallido</h4>
+    <p>{{ vm.loginfailederror }}</p>
+  </div>
+  <div class="callout callout-danger" ng-if="vm.loginfailed">
+    <h4>Intento fallido</h4>
+    <p> Email o Password Incorrecto.</p>
+  </div>
+  <div class="callout callout-danger" ng-if="vm.unverified">
+    <h4>Email Sin Verificar</h4>
+    <p>Por favor revise su correo, y haga click en el link de verificación.</p>
+  </div>
+  <div class="callout callout-success" ng-if="vm.registerSuccess">
+    <h4>Registration Success!</h4>
+    <p>Un link de verificación ha sido enviado a su cuenta de correo, Gracias!</p>
+  </div>
+  <div class="callout callout-success" ng-if="vm.successMsg">
+    <h4>Éxito!</h4>
+    <p>{{ vm.successMsg }}</p>
+  </div>
+  <div class="form-group has-feedback">
+    <input type="email" class="form-control" placeholder="Usuario/DNI" name="email" ng-model="vm.email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+  </div>
+  <div class="form-group has-feedback">
+    <input type="password" class="form-control" placeholder="Contraseña" name="password" ng-model="vm.password" ng-required="true">
+    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button type="submit" class="btn btn-primary btn-block btn-flat">
+        Ingresar
+      </button>
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="pull-left">
+      <a ui-sref="forgot_password">Olvidó su contraseña?</a>
+    </div>
+  </div>
+  <!--
+  <div class="col-xs-6">
+    <div class="pull-right">
+      <a ui-sref="register" class="text-center">Crear una cuenta</a>
+    </div>
+  </div>
+  -->
+</div>
