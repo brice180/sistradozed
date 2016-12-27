@@ -213,6 +213,17 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.uitlist', {
+      url: '/listar-uit',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<uit-list></uit-list>'
+        }
+      }
+    })
     .state('app.estadolist', {
       url: '/estado-list',
       data: {
@@ -221,6 +232,28 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       views: {
         'main@app': {
           template: '<estado-list></estado-list>'
+        }
+      }
+    })
+    .state('app.procedimientoslist', {
+      url: '/listar-procedimientos',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<procedimiento-list></procedimiento-list>'
+        }
+      }
+    })
+    .state('app.requisitoslist', {
+      url: '/listar-requisitos',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<requisitos-list></requisitos-list>'
         }
       }
     })
@@ -279,6 +312,20 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.uitadd', {
+      url: '/agregar-uit',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<uit-add></uit-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
     .state('app.estadoadd', {
       url: '/estado-add',
       data: {
@@ -287,6 +334,34 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       views: {
         'main@app': {
           template: '<estado-add></estado-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.procedimientoadd', {
+      url: '/nuevo-procedimiento',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<procedimiento-add></procedimiento-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.requisitoadd', {
+      url: '/nuevo-requisito',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<requisito-add></requisito-add>'
         }
       },
       params: {
@@ -391,6 +466,21 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         alerts: null
       }
     })
+    .state('app.uitedit', {
+      url: '/editar-uit/:uitId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<uit-edit></uit-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        uitId: null
+      }
+    })
     .state('app.estadoedit', {
       url: '/estado-edit/:estadoId',
       data: {
@@ -404,6 +494,51 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       params: {
         alerts: null,
         estadoId: null
+      }
+    })
+    .state('app.procedimientoedit', {
+      url: '/editar-procedimiento/:procedimientoId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<procedimiento-edit></procedimiento-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        procedimientoId: null
+      }
+    })
+    .state('app.procedrequisito', {
+      url: '/procedimiento-req/:procedimientoId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<procedimiento-requisito></procedimiento-requisito>'
+        }
+      },
+      params: {
+        alerts: null,
+        procedimientoId: null
+      }
+    })
+    .state('app.requisitoedit', {
+      url: '/editar-requisito/:requisitoId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<requisito-edit></requisito-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        requisitoId: null
       }
     })
     .state('app.tipodocedit', {

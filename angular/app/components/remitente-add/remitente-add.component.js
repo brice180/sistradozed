@@ -8,26 +8,9 @@ class RemitenteAddController{
     this.alerts = []
     this.$scope = $scope
 
-    let Entidades = this.API.service('entidades')
-    Entidades.getList()
-      .then((response) => {
-        $scope.entis = response.plain() 
-        this.enti = null 
-    })
-
-    let Tipodoc = this.API.service('tipodocs')
-    Tipodoc.getList()
-      .then((response) => {
-        $scope.tipodocs = response.plain()
-        this.tdocs = null
-    })
-
-    let Tiporem = this.API.service('tipospersonas')
-    Tiporem.getList()
-      .then((response) => {
-        $scope.tipor = response.plain()
-        this.tipors = null //$scope.tipor[0] 
-    })
+    $scope.tipor = API.all('tipospersonas').getList().$object;
+    $scope.tipodocs = API.all('tipodocs').getList().$object;
+    $scope.entis = API.all('entidades').getList().$object;
 
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)

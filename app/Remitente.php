@@ -8,19 +8,13 @@ class Remitente extends Model
 {
     //
     protected $fillable = ['tipodoc_id','numdoc','nombres',
-    'apellidos','entidad_id','tiporemitente_id','razonSocial'
+    'apellidos','entidad_id','tipo_remitente_id','razonSocial'
      ];
 
-   
-	public function entidad2()
-	{
-    return $this->belongsTo('App\Entidad','idEntidad','id');
-	}
-
-	
+   	
     public function entidad()
 	{
-    return $this->hasOne('App\Entidad','id');
+        return $this->belongs_to('App\Entidad');  // Devuelve solo un objeto
 	}
 
 }

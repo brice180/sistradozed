@@ -1,0 +1,90 @@
+<section class="content-header">
+  <h1>TUPA <small>Modulo de Edición de Procedimientos</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.procedimientoslist">Lista de Procedimiento</a></li>
+    <li class="active">Editar Procedimiento</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar Procedimiento</h3>
+        </div>
+        <form class="form-horizontal" name="procedimientoForm" ng-submit="vm.save(procedimientoForm.$valid, procedimientoForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': requisitoForm.descripcion.$invalid && ( vm.formSubmitted || requisitoForm.descripcion.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Descripción</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" rows="3" ng-model="vm.procedimiento.data.descripcion" name="descripcion" placeholder="Escriba aquí la descripcion del Procedimiento" required></textarea>
+                <p ng-show="requisitoForm.descripcion.$error.required && ( vm.formSubmitted || requisitoForm.descripcion.$touched)" class="help-block">Descripción es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.uit.$invalid && ( vm.formSubmitted || procedimientoForm.uit.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">UIT actual</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="vm.uit.data.monto" name="uit" placeholder="UIT" disabled="true">
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.porcentaje_uit.$invalid && ( vm.formSubmitted || procedimientoForm.porcentaje_uit.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Costo en % Uit</label>
+              <div class="col-sm-3">
+                <input type="number" class="form-control" ng-model="vm.procedimiento.data.porcentaje_uit" name="porcentaje_uit" placeholder="0.0000 %" required>
+                <p ng-show="procedimientoForm.porcentaje_uit.$error.required && ( vm.formSubmitted || procedimientoForm.porcentaje_uit.$touched)" class="help-block">Si es gratuito, escriba 0</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.monto.$invalid && ( vm.formSubmitted || procedimientoForm.monto.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Monto S/.</label>
+              <div class="col-sm-3">
+                <input type="number" class="form-control" ng-model="vm.procedimiento.data.monto" name="monto" placeholder="0.00" required>
+              </div>
+            </div>            
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.dias_resolver.$invalid && ( vm.formSubmitted || procedimientoForm.dias_resolver.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Días para resolver</label>
+              <div class="col-sm-3">
+                <input type="number" class="form-control" ng-model="vm.procedimiento.data.dias_resolver" name="dias_resolver" placeholder="Días">
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.inicia_proc.$invalid && ( vm.formSubmitted || procedimientoForm.inicia_proc.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Inicia Procedimiento</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="inicia_proc" ng-model="vm.procedimiento.data.inicia_proc" ng-options="oficina.id as oficina.nombre for oficina in oficinas" required>
+                  <option value="">-- Elegir --</option>
+                </select>
+                <p ng-show="procedimientoForm.inicia_proc.$error.required && ( vm.formSubmitted || procedimientoForm.inicia_proc.$touched)" class="help-block">Si no tiene entidad, seleccione "Otros".</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.resuelve_proc.$invalid && ( vm.formSubmitted || procedimientoForm.resuelve_proc.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Autoridad que resuelve</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="resuelve_proc" ng-model="vm.procedimiento.data.resuelve_proc" ng-options="oficina.id as oficina.nombre for oficina in oficinas" required>
+                  <option value="">-- Elegir --</option>
+                </select>
+                <p ng-show="procedimientoForm.resuelve_proc.$error.required && ( vm.formSubmitted || procedimientoForm.resuelve_proc.$touched)" class="help-block">Si no tiene entidad, seleccione "Otros".</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': procedimientoForm.reconsidera_proc.$invalid && ( vm.formSubmitted || procedimientoForm.reconsidera_proc.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Reconsideración</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="reconsidera_proc" ng-model="vm.procedimiento.data.reconsidera_proc" ng-options="oficina.id as oficina.nombre for oficina in oficinas" required>
+                  <option value="">-- Elegir --</option>
+                </select>
+                <p ng-show="procedimientoForm.reconsidera_proc.$error.required && ( vm.formSubmitted || procedimientoForm.reconsidera_proc.$touched)" class="help-block">Si no tiene entidad, seleccione "Otros".</p>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.procedimientoslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

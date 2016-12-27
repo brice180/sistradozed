@@ -37,7 +37,7 @@ class RemitenteController extends Controller
             'nombres' => Input::get('nombres'),
             'apellidos' => Input::get('apellidos'),
             'entidad_id' => Input::get('entidad_id'),
-            'tiporemitente_id' => Input::get('tiporemitente_id'),
+            'tipo_remitente_id' => Input::get('tiporemitente_id'),
             'razonSocial' => Input::get('razonSocial'),
         ]);
 

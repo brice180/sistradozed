@@ -122,10 +122,9 @@
             <div class="form-group col-xs-12 col-md-8" ng-class="{ 'has-error': expedienteForm.entorigen.$invalid && ( vm.formSubmitted || expedienteForm.entorigen.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Entidad de Origen</label>
               <div class="col-sm-9">
-                <select class="form-control">
-                <option>Natural</option>
-                <option>Jurídica</option>
-              </select>
+                <select class="form-control" name="entorigen" ng-model="vm.entorigen" ng-options="entidad.id as entidad.razonSocial for entidad in entis track by entidad.id" required>
+                  <option value="">-- Elegir --</option>
+                </select>
                 <p ng-show="expedienteForm.entorigen.$error.required && ( vm.formSubmitted || expedienteForm.entorigen.$touched)" class="help-block">Es obligatorio.</p>
               </div>
             </div>
@@ -139,10 +138,9 @@
             <div class="form-group col-xs-12 col-md-8" ng-class="{ 'has-error': expedienteForm.destinatario.$invalid && ( vm.formSubmitted || expedienteForm.destinatario.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Dirigido a</label>
               <div class="col-sm-9">
-                <select class="form-control">
-                <option>Natural</option>
-                <option>Jurídica</option>
-              </select>
+                <select class="form-control" name="destinatario" ng-model="vm.destinatario" ng-options="oficina.id as oficina.nombre for oficina in oficinas track by oficina.id" required>
+                  <option value="">-- Elegir --</option>
+                </select>
                 <p ng-show="expedienteForm.destinatario.$error.required && ( vm.formSubmitted || expedienteForm.destinatario.$touched)" class="help-block">Es obligatorio.</p>
               </div>
             </div>
@@ -168,11 +166,7 @@
             <div class="form-group col-xs-12 col-md-8" ng-class="{ 'has-error': expedienteForm.nfolios.$invalid && ( vm.formSubmitted || expedienteForm.nfolios.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">N° folios</label>
               <div class="col-sm-4">
-                <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
+                <input type="number" class="form-control" ng-model="vm.nfolios" name="nfolios" placeholder="N°">
                 <p ng-show="expedienteForm.nfolios.$error.required && ( vm.formSubmitted || expedienteForm.nfolios.$touched)" class="help-block">Es obligatorio.</p>
               </div>
             </div>

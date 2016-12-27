@@ -19,13 +19,13 @@ class CreateRemitenteTable extends Migration
             $table->string('nombres',80);
             $table->string('apellidos',100);
             $table->unsignedInteger('entidad_id');
-            $table->unsignedInteger('tiporemitente_id');
+            $table->unsignedInteger('tipo_remitente_id');
             $table->string('razonSocial',100)->nullable();
             $table->timestamps();
             
             $table->foreign('tipodoc_id')->references('id')->on('tipo_doc');
             $table->foreign('entidad_id')->references('id')->on('entidades');
-            $table->foreign('tiporemitente_id')->references('id')->on('tipo_remitente');
+            $table->foreign('tipo_remitente_id')->references('id')->on('tipo_remitente');
         });
     }
 

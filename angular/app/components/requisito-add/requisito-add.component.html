@@ -1,0 +1,38 @@
+<section class="content-header">
+  <h1>TUPA <small>Modulo de Registro de Requisitos</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.requisitoslist">Lista de Requisitos</a></li>
+    <li class="active">Agregar nuevo Requisito</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar nuevo Requisito</h3>
+        </div>
+        <form class="form-horizontal" name="requisitoForm" ng-submit="vm.save(requisitoForm.$valid, requisitoForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': requisitoForm.desc.$invalid && ( vm.formSubmitted || requisitoForm.desc.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Descripción</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" rows="3" ng-model="vm.desc" name="desc" placeholder="Escriba aquí la descripción del requisito" required></textarea>
+                <p ng-show="requisitoForm.desc.$error.required && ( vm.formSubmitted || requisitoForm.desc.$touched)" class="help-block">Descripción es obligatorio.</p>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.requisitoslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

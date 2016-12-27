@@ -11,4 +11,9 @@ class Tipospersona extends Model
 
     protected $fillable = ['descripcion',
      ];
+
+     public function Remitente()
+     {
+     	return $this->has_many('Remitente');
+     }
 }

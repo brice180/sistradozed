@@ -1,7 +1,7 @@
 class RemitenteEditController{
      constructor ($stateParams, $state, API, $scope) {
     'ngInject'
-    $scope.f=0
+    //$scope.f=0
     this.$state = $state
     this.formSubmitted = false
     this.alerts = []    
@@ -21,7 +21,7 @@ class RemitenteEditController{
       .then((response) => { 
         this.remitente = API.copy(response) 
     }) 
-    $scope.f=1         
+    //$scope.f=1         
   }
 
   save (isValid) {

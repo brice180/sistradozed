@@ -33,8 +33,7 @@ class OficinasAddController{
     }
   }
 
-    $onInit(){
-    }
+    $onInit(){}
 }
 
 export const OficinasAddComponent = {

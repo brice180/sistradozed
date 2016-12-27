@@ -22,7 +22,7 @@ Route::group(['middleware' => ['web']], function () {
 
 $api->group(['middleware' => ['api']], function ($api) {
     $api->controller('auth', 'Auth\AuthController');
-       
+    
     // Password Reset Routes...
     $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
     $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
@@ -44,4 +44,7 @@ $api->group(['middleware' => ['api', 'api.auth', 'role:admin.super|admin.user']]
     $api->controller('tipodocs', 'TipodocumentoController');
     $api->controller('tipospersonas', 'tipodController');
     $api->controller('empleados', 'EmpleadoController');
+    $api->controller('requisitos', 'RequisitoController');
+    $api->controller('uits', 'UitController');
+    $api->controller('procedimientos', 'ProcedimientoController');
 });

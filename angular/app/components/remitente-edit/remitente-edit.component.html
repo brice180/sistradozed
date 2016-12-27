@@ -13,21 +13,21 @@
         <div class="box-header with-border">
           <h3 class="box-title">Editar Remitente</h3>
         </div>
-        <div class="precarga" ng-hide="vm.remitente.data">
-         <i class="fa fa-refresh fa-spin fa-5x"></i>
+        <div class="col-sm-6 precarga" ng-hide="vm.remitente.data">
+         <i class="fa fa-refresh fa-spin fa-1x"></i>
         </div>
-        <form class="form-horizontal" name="remitenteForm" ng-submit="vm.save(remitenteForm.$valid, remitenteForm)" novalidate>
+        <form class="form-horizontal" name="remitenteForm" ng-submit="vm.save(remitenteForm.$valid, remitenteForm)" ng-show="vm.remitente.data" novalidate>
           <div class="box-body">
             <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
               <h4>{{alert.title}}</h4>
               <p>{{alert.msg}}</p>
             </div>
-            <div class="form-group" ng-class="{ 'has-error': remitenteForm.tiporemitente_id.$invalid && ( vm.formSubmitted || remitenteForm.tiporemitente_id.$touched) }">
+            <div class="form-group" ng-class="{ 'has-error': remitenteForm.tipo_remitente_id.$invalid && ( vm.formSubmitted || remitenteForm.tipo_remitente_id.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Tipo Person</label>
               <div class="col-sm-9">
-                <select class="form-control" name="tiporemitente_id" ng-model="vm.remitente.data.tiporemitente_id" ng-options="tr.id as tr.descripcion for tr in tipor" required>
+                <select class="form-control" name="tipo_remitente_id" ng-model="vm.remitente.data.tipo_remitente_id" ng-options="tr.id as tr.descripcion for tr in tipor" required>
                 </select>
-                <p ng-show="remitenteForm.tiporemitente_id.$error.required && ( vm.formSubmitted || remitenteForm.tiporemitente_id.$touched)" class="help-block">Es obligatorio.</p>
+                <p ng-show="remitenteForm.tipo_remitente_id.$error.required && ( vm.formSubmitted || remitenteForm.tipo_remitente_id.$touched)" class="help-block">Es obligatorio.</p>
               </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error': remitenteForm.tipodoc_id.$invalid && ( vm.formSubmitted || remitenteForm.tipodoc_id.$touched) }">

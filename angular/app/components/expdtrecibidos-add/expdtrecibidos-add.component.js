@@ -13,7 +13,10 @@ class ExpdtrecibidosAddController{
         this.items = ['item1', 'item2', 'item3']
         this.factual = new Date();
         this.anio= (new Date).getFullYear();
-        this.animationsEnabled = true        
+        this.animationsEnabled = true 
+
+        $scope.oficinas = API.all('oficinas').getList().$object
+        $scope.entis = API.all('entidades').getList().$object          
 
         if ($stateParams.alerts) {
           this.alerts.push($stateParams.alerts)

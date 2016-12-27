@@ -1,3 +1,7 @@
+import {ProcedimientoRequisitoComponent} from './app/components/procedimiento-requisito/procedimiento-requisito.component';
+import {UitEditComponent} from './app/components/uit-edit/uit-edit.component';
+import {UitAddComponent} from './app/components/uit-add/uit-add.component';
+import {UitListComponent} from './app/components/uit-list/uit-list.component';
 import {UsersAddComponent} from './app/components/users-add/users-add.component';
 import {ExpdtrecibidosAddComponent} from './app/components/expdtrecibidos-add/expdtrecibidos-add.component';
 import {ExpdtrecibidosListComponent} from './app/components/expdtrecibidos-list/expdtrecibidos-list.component';
@@ -67,6 +71,10 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('procedimientoRequisito', ProcedimientoRequisitoComponent)
+	.component('uitEdit', UitEditComponent)
+	.component('uitAdd', UitAddComponent)
+	.component('uitList', UitListComponent)
 	.component('usersAdd', UsersAddComponent)
 	.component('expdtrecibidosAdd', ExpdtrecibidosAddComponent)
 	.component('expdtrecibidosList', ExpdtrecibidosListComponent)

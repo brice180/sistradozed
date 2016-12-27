@@ -1,0 +1,44 @@
+<section class="content-header">
+  <h1>UITs<small>Modulo de Registro de UITs</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.uitlist">Lista de UITs</a></li>
+    <li class="active">Agregar nueva UIT</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar nueva UIT</h3>
+        </div>
+        <form class="form-horizontal" name="uitForm" ng-submit="vm.save(uitForm.$valid, uitForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': uitForm.anio.$invalid && ( vm.formSubmitted || uitForm.anio.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Año</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" ng-model="vm.anio" name="anio" placeholder="Año" required>
+                <p ng-show="uitForm.anio.$error.required && ( vm.formSubmitted || uitForm.anio.$touched)" class="help-block">Año es obligatorio.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': uitForm.monto.$invalid && ( vm.formSubmitted || uitForm.monto.$touched) }">
+              <label for="inputPassword3" class="col-sm-3 control-label">Monto</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" ng-model="vm.monto" name="monto" placeholder="Monto de la UIT" required>
+                <p ng-show="uitForm.monto.$error.required && ( vm.formSubmitted || uitForm.monto.$touched)" class="help-block">Monto son obligatorias.</p>
+              </div>
+            </div>
+          <div class="box-footer">
+            <a ui-sref="app.uitlist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <button type="submit" class="btn btn-primary pull-right">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

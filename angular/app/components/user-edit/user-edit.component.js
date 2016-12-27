@@ -46,7 +46,7 @@ class UserEditController {
       let $state = this.$state
       this.usereditdata.put()
         .then(() => {
-          let alert = { type: 'success', 'title': 'Success!', msg: 'User has been updated.' }
+          let alert = { type: 'success', 'title': 'Éxito!', msg: 'Usuario a sido actualizado.' }
           $state.go($state.current, { alerts: alert})
         }, (response) => {
           let alert = { type: 'error', 'title': 'Error!', msg: response.data.message }
