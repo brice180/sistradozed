@@ -13,7 +13,7 @@ class Procedimiento extends Model
 
    public function requisitos()
 	{
-        return $this->has_many_and_belongs_to('App\Requisito');  
+        return $this->belongsToMany('App\Requisito');  
 	}
 }
 

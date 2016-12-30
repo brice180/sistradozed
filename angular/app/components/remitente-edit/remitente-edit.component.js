@@ -1,15 +1,14 @@
 class RemitenteEditController{
      constructor ($stateParams, $state, API, $scope) {
     'ngInject'
-    //$scope.f=0
     this.$state = $state
     this.formSubmitted = false
     this.alerts = []    
     this.$scope = $scope
 
-    $scope.tipor = API.all('tipospersonas').getList().$object;
-    $scope.tipodocs = API.all('tipodocs').getList().$object;
-    $scope.entis = API.all('entidades').getList().$object; 
+    this.tipor = API.all('tipospersonas').getList().$object;
+    this.tipodocs = API.all('tipodocs').getList().$object;
+    this.entis = API.all('entidades').getList().$object; 
     
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)
@@ -20,8 +19,7 @@ class RemitenteEditController{
     Remitente.one(remitenteId).get()
       .then((response) => { 
         this.remitente = API.copy(response) 
-    }) 
-    //$scope.f=1         
+    })        
   }
 
   save (isValid) {

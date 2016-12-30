@@ -7,20 +7,26 @@ class ExpdtrecibidosAddController{
         this.formSubmitted = false
         this.alerts = []
 
+        this.origenes = API.all('origenes').getList().$object
+        this.origen=1
+        this.tipodocs = API.all('tipodocumentos').getList().$object 
+        this.oficinas = API.all('oficinas').getList().$object
+        this.entis = API.all('entidades').getList().$object        
+        this.origenes = API.all('origenes').getList().$object
+
         this.$uibModal = $uibModal
         this.$log = $log
         this.$scope = $scope
         this.items = ['item1', 'item2', 'item3']
-        this.factual = new Date();
-        this.anio= (new Date).getFullYear();
-        this.animationsEnabled = true 
-
-        $scope.oficinas = API.all('oficinas').getList().$object
-        $scope.entis = API.all('entidades').getList().$object          
+        this.factual = new Date()
+        this.origen=1
+        this.anio= (new Date).getFullYear()
+        this.animationsEnabled = true  
 
         if ($stateParams.alerts) {
           this.alerts.push($stateParams.alerts)
         }   
+        console.log(this.origen2)
     }
 
      modalOpen (size) {

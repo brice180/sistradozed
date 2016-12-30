@@ -7,23 +7,31 @@ class ProcedimientoRequisitoController{
     this.$scope = $scope
     this.listarequisitos = []
 
-    $scope.requisitos = API.all('requisitos').getList().$object
-    
+      
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)
     }
 
     let procedimientoId = $stateParams.procedimientoId
-    let Procedimiento = API.service('procedimiento-show', API.all('procedimientos'))
-    Procedimiento.one(procedimientoId).get()
-      .then((response) => { 
+    let ProcReq = API.service('requisitos', API.all('procedimientos'))
+    ProcReq.one(procedimientoId).get()
+      .then((response) => {
+        let listar = []
+        let procreq = response.plain()    
+
+        angular.forEach(procreq.data.requisito, function (value) {
+          listar.push({id: value.id, descripcion: value.descripcion})
+        })
+        this.listar = listar
         this.procedimiento = API.copy(response) 
-    })        
+        //console.log(this.procedimiento)
+      }) 
+
+      this.requisitos = API.all('requisitos').getList().$object//Obtiene la lista de todos los requisitos      
   }
 
-  agregarequisito() {
-    let $scope = this.$scope
-    this.listarequisitos.push({id: this.requisito.id, descripcion: this.requisito.descripcion})
+  agregarequisito() { //Agrega nuevo requisito a la lista
+    this.listar.push({id: this.requisito.id, descripcion: this.requisito.descripcion})
     this.requisito=null
   }
 

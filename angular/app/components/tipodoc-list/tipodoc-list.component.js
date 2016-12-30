@@ -62,7 +62,7 @@ class TipodocListController{
         .then(() => {
           swal({
             title: 'Eliminado!',
-            text: 'Estado eliminado con éxito.',
+            text: 'Tipo eliminado con éxito.',
             type: 'success',
             confirmButtonText: 'OK',
             closeOnConfirm: true

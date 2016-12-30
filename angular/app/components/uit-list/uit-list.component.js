@@ -18,9 +18,9 @@ class UitListController{
           .withBootstrap()
 
         this.dtColumns = [
-          DTColumnBuilder.newColumn('id').withTitle('ID'),
-          DTColumnBuilder.newColumn('monto').withTitle('Monto'),
+          DTColumnBuilder.newColumn('id').withTitle('ID'),          
           DTColumnBuilder.newColumn('anio').withTitle('Año'),
+          DTColumnBuilder.newColumn('monto').withTitle('Monto'),
           DTColumnBuilder.newColumn(null).withTitle('Acciones').notSortable()
             .renderWith(actionsHtml)
         ]

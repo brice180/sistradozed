@@ -15,11 +15,12 @@ class CreateProcedimientoRequisitoTable extends Migration
         //
          Schema::create('procedimiento_requisito', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('procedimiento_id')->unsigned()->index();
-            $table->foreign('procedimiento_id')->references('id')->on('procedimientos')->onDelete('cascade');
-            $table->integer('requerimiento_id')->unsigned()->index();
-            $table->foreign('requerimiento_id')->references('id')->on('requerimientos')->onDelete('cascade');
+            $table->unsignedInteger('procedimiento_id')->index();            
+            $table->unsignedInteger('requisito_id')->index();            
             $table->timestamps();
+
+            $table->foreign('requisito_id')->references('id')->on('requisitos')->onDelete('cascade');
+            $table->foreign('procedimiento_id')->references('id')->on('procedimientos')->onDelete('cascade');
         });
     }
 

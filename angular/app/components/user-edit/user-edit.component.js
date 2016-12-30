@@ -5,7 +5,7 @@ class UserEditController {
     this.$state = $state
     this.formSubmitted = false
     this.alerts = []
-    this.userRolesSelected = []
+    //this.userRolesSelected = []
 
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)
@@ -33,7 +33,7 @@ class UserEditController {
         let userResponse = response.plain()
 
         angular.forEach(userResponse.data.role, function (value) {
-          userRole.push(value.id)
+          userRole.push(value.id) //Check para cada Rol de Usuario
         })
 
         response.data.role = userRole

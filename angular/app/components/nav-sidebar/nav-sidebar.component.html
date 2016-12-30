@@ -25,15 +25,15 @@
           <i class="fa fa-dashboard"></i> <span>Principal</span>
         </a>
       </li>
-      <li class="treeview" ng-show="vm.can('manage.expedientes')">
+      <li class="treeview" ng-show="vm.can('manage.users')">
         <a href="javascript:void(0)">
           <i class="fa fa-unlink"></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.expdtrecibidoslist'><i class="fa fa-envelope-o"></i> <span>Recibidos</span>
+          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.expdtrecibidoslist'><i class="fa fa-envelope-o"></i> <span>Recibidos</span>
           <small class="label pull-right bg-yellow">12</small></a></li>
-          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.userlist'><i class="fa fa-paper-plane"></i> <span>Derivados</span></a></li>
-          <li ng-show="vm.can('manage.expedientes')" class="active"><a ui-sref='app.userlist'><i class="fa  fa-list-alt"></i> <span>Consultas</span></a></li>
+          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-paper-plane"></i> <span>Derivados</span></a></li>
+          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa  fa-list-alt"></i> <span>Consultas</span></a></li>
         </ul>
       </li>
       <li class="treeview" ng-show="vm.can('manage.roles') || vm.can('manage.permissions')">
@@ -73,6 +73,9 @@
             </a>
             <ul class="treeview-menu">
               <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.estadolist'><i class="fa fa-minus-square"></i> <span>Estados</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.tipodocumentolist'><i class="fa   fa-file-text"></i> <span>Tipo Documentos</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.prioridadeslist'><i class="fa   fa-clock-o"></i> <span>Prioridades</span></a></li>
+              <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.motivoslist'><i class="fa fa-check-square"></i> <span>Motivos Mov.</span></a></li>
             </ul>
           </li>    
 

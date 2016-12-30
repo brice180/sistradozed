@@ -14,7 +14,8 @@ class Remitente extends Model
    	
     public function entidad()
 	{
-        return $this->belongs_to('App\Entidad');  // Devuelve solo un objeto
+        //return $this->belongsTo('App\Entidad', 'entidad_id');  // Devuelve solo un objeto
+        return $this->belongsTo('App\Entidad');  // Devuelve solo un objeto
 	}
 
 }

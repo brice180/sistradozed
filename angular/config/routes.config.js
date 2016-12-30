@@ -154,6 +154,28 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         alerts: null
       }
     })
+    .state('app.motivoslist', {
+      url: '/lista-motivos-mov',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<motivomov-list></motivomov-list>'
+        }
+      }
+    })
+    .state('app.tipodocumentolist', {
+      url: '/lista-tipo-documento',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<tipodocumento-list></tipodocumento-list>'
+        }
+      }
+    })
     .state('app.userlist', {
       url: '/user-lists',
       data: {
@@ -174,6 +196,21 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         'main@app': {
           template: '<expdtrecibidos-list></expdtrecibidos-list>'
         }
+      }
+    })
+    .state('app.motivoedit', {
+      url: '/editar-motivo-mov/:motivoId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<motivomov-edit></motivomov-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        motivoId: null
       }
     })
     .state('app.useredit', {
@@ -210,6 +247,17 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       views: {
         'main@app': {
           template: '<user-permissions></user-permissions>'
+        }
+      }
+    })
+    .state('app.prioridadeslist', {
+      url: '/listar-prioridades',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<prioridades-list></prioridades-list>'
         }
       }
     })
@@ -312,6 +360,20 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.motivoadd', {
+      url: '/agregar-motivo-mov',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<motivomov-add></motivomov-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
     .state('app.uitadd', {
       url: '/agregar-uit',
       data: {
@@ -338,6 +400,49 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       },
       params: {
         alerts: null
+      }
+    })
+    .state('app.prioridadadd', {
+      url: '/agregar-prioridad',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<prioridades-add></prioridades-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.tipodocumentoadd', {
+      url: '/agregar-tipo-documento',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<tipodocumento-add></tipodocumento-add>'
+        }
+      },
+      params: {
+        alerts: null
+      }
+    })
+    .state('app.tipodocumentoedit', {
+      url: '/editar-tipo-documento/:tipodocumentoId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<tipodocumento-edit></tipodocumento-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        tipodocumentoId: null
       }
     })
     .state('app.procedimientoadd', {
@@ -464,6 +569,21 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       },
       params: {
         alerts: null
+      }
+    })
+    .state('app.prioridadedit', {
+      url: '/editar-prioridad/:prioridadId',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<prioridades-edit></prioridades-edit>'
+        }
+      },
+      params: {
+        alerts: null,
+        prioridadId: null
       }
     })
     .state('app.uitedit', {

@@ -14,6 +14,6 @@ class Entidad extends Model
 
      public function remitentes()
     {
-       return $this->has_Many('App\Remitente'); // Devuelve un array de remitente
+       return $this->hasMany('App\Remitente'); // Devuelve un array de remitente
     }
 }

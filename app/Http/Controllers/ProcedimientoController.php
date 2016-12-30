@@ -65,4 +65,40 @@ class ProcedimientoController extends Controller
         Procedimiento::destroy($id);
         return response()->success('success');
     }
+
+    public function getRequisitos($id)
+    {
+        $procrequisito = Procedimiento::find($id);
+        //$procrequisito = Procedimiento::where('id',$id);
+        $procrequisito['requisito'] = $procrequisito
+                        ->requisitos()
+                        ->select(['requisitos.id', 'requisitos.descripcion'])
+                        ->get();
+
+        return response()->success($procrequisito);
+    }
+
+    public function putRequisitos(Request $request)
+    {
+        $procedreqForm = array_dot(
+            app('request')->only(
+                'data.descripcion',
+                'data.id'
+            )
+        );
+        $procId = intval($procedreqForm['data.id']);
+        $procedimiento = Procedimiento::find($procId);
+
+        $procData = [
+            'descripcion' => $procedreqForm['data.descripcion'],
+        ];
+
+        $affectedRows = Procedimiento::where('id', '=', $procId)->update($procData);
+
+        foreach (Input::get('data.requisito') as $setRequisito) {
+            $procedimiento->requisito()->attach($setRequisito);
+        }
+
+        return response()->success('success');
+    }
 }

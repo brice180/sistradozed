@@ -42,9 +42,13 @@ $api->group(['middleware' => ['api', 'api.auth', 'role:admin.super|admin.user']]
     $api->controller('cargos', 'CargoController');
     $api->controller('remitentes', 'RemitenteController');
     $api->controller('tipodocs', 'TipodocumentoController');
+    $api->controller('tipodocumentos', 'TipodocController');
     $api->controller('tipospersonas', 'tipodController');
     $api->controller('empleados', 'EmpleadoController');
     $api->controller('requisitos', 'RequisitoController');
     $api->controller('uits', 'UitController');
     $api->controller('procedimientos', 'ProcedimientoController');
+    $api->controller('prioridades', 'PrioridadController');
+    $api->controller('motivos', 'MotivoController');
+    $api->controller('origenes', 'OrigenController');
 });

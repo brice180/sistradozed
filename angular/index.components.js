@@ -1,3 +1,9 @@
+import {MotivomovEditComponent} from './app/components/motivomov-edit/motivomov-edit.component';
+import {MotivomovAddComponent} from './app/components/motivomov-add/motivomov-add.component';
+import {MotivomovListComponent} from './app/components/motivomov-list/motivomov-list.component';
+import {PrioridadesEditComponent} from './app/components/prioridades-edit/prioridades-edit.component';
+import {PrioridadesAddComponent} from './app/components/prioridades-add/prioridades-add.component';
+import {PrioridadesListComponent} from './app/components/prioridades-list/prioridades-list.component';
 import {ProcedimientoRequisitoComponent} from './app/components/procedimiento-requisito/procedimiento-requisito.component';
 import {UitEditComponent} from './app/components/uit-edit/uit-edit.component';
 import {UitAddComponent} from './app/components/uit-add/uit-add.component';
@@ -71,6 +77,12 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('motivomovEdit', MotivomovEditComponent)
+	.component('motivomovAdd', MotivomovAddComponent)
+	.component('motivomovList', MotivomovListComponent)
+	.component('prioridadesEdit', PrioridadesEditComponent)
+	.component('prioridadesAdd', PrioridadesAddComponent)
+	.component('prioridadesList', PrioridadesListComponent)
 	.component('procedimientoRequisito', ProcedimientoRequisitoComponent)
 	.component('uitEdit', UitEditComponent)
 	.component('uitAdd', UitAddComponent)

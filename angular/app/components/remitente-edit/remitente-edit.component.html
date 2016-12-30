@@ -25,7 +25,7 @@
             <div class="form-group" ng-class="{ 'has-error': remitenteForm.tipo_remitente_id.$invalid && ( vm.formSubmitted || remitenteForm.tipo_remitente_id.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Tipo Person</label>
               <div class="col-sm-9">
-                <select class="form-control" name="tipo_remitente_id" ng-model="vm.remitente.data.tipo_remitente_id" ng-options="tr.id as tr.descripcion for tr in tipor" required>
+                <select class="form-control" name="tipo_remitente_id" ng-model="vm.remitente.data.tipo_remitente_id" ng-options="tr.id as tr.descripcion for tr in vm.tipor" required>
                 </select>
                 <p ng-show="remitenteForm.tipo_remitente_id.$error.required && ( vm.formSubmitted || remitenteForm.tipo_remitente_id.$touched)" class="help-block">Es obligatorio.</p>
               </div>
@@ -33,7 +33,7 @@
             <div class="form-group" ng-class="{ 'has-error': remitenteForm.tipodoc_id.$invalid && ( vm.formSubmitted || remitenteForm.tipodoc_id.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Tipo Documento</label>
               <div class="col-sm-9">
-                <select class="form-control" name="tipodoc_id" ng-model="vm.remitente.data.tipodoc_id" ng-options="td.id as td.descripcion for td in tipodocs" required>
+                <select class="form-control" name="tipodoc_id" ng-model="vm.remitente.data.tipodoc_id" ng-options="td.id as td.descripcion for td in vm.tipodocs" required>
                 </select>
                 <p ng-show="remitenteForm.tipodoc_id.$error.required && ( vm.formSubmitted || remitenteForm.tipodoc_id.$touched)" class="help-block">Es obligatorio.</p>
               </div>
@@ -62,7 +62,7 @@
             <div class="form-group" ng-class="{ 'has-error': remitenteForm.entidad_id.$invalid && ( vm.formSubmitted || remitenteForm.entidad_id.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Entidad</label>
               <div class="col-sm-9">
-                <select class="form-control" name="entidad_id" ng-model="vm.remitente.data.entidad_id" ng-options="et.id as et.razonSocial for et in entis" required>
+                <select class="form-control" name="entidad_id" ng-model="vm.remitente.data.entidad_id" ng-options="et.id as et.razonSocial for et in vm.entis" required>
                 </select>
                 <p ng-show="remitenteForm.entidad_id.$error.required && ( vm.formSubmitted || remitenteForm.entidad_id.$touched)" class="help-block">Es obligatorio.</p>
               </div>

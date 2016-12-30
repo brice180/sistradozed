@@ -12,6 +12,6 @@ class Requisito extends Model
 
     public function procedimientos()
 	{
-        return $this->has_many_and_belongs_to('App\Procedimiento');  // Devuelve solo un objeto
+        return $this->belongsToMany('App\Procedimiento');  
 	}
 }

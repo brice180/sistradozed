@@ -12,7 +12,7 @@ class CreatePrioridadTable extends Migration
      */
     public function up()
     {
-        Schema::create('prioridad', function (Blueprint $table) {
+        Schema::create('prioridades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion',50);
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreatePrioridadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('prioridad');
+        Schema::drop('prioridades');
     }
 }

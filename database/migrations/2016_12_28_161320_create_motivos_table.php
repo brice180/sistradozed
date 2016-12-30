@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMotivoMovTable extends Migration
+class CreateMotivosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMotivoMovTable extends Migration
      */
     public function up()
     {
-        Schema::create('motivo_mov', function (Blueprint $table) {
+        Schema::create('motivos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion',50);
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateMotivoMovTable extends Migration
      */
     public function down()
     {
-        Schema::drop('motivo_mov');
+        Schema::drop('motivos');
     }
 }

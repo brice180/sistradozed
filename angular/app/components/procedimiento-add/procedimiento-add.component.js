@@ -8,20 +8,17 @@ class ProcedimientoAddController{
     this.alerts = []
     this.$scope = $scope
 
-    //$scope.uit = API.one('uits/uitactual').getList().$object
+    
     $scope.uit2 = API.service('uitactual', API.all('uits'))
     //$scope.tipor = API.all('requisitos').getList().$object
     $scope.oficinas = API.all('oficinas').getList().$object
 
-    let uitId = 3
-    let Uit = API.service('uit-show', API.all('uits'))
-   //let Uit = API.service('uitactual', API.all('uits'))
-    Uit.one(uitId).get()
+   let Uit = API.service('uitactual', API.all('uits'))
+    Uit.one().get()
       .then((response) => {
         this.uit = API.copy(response)
       })
-     //console.log($scope.uit2)
-
+     
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)
     }   

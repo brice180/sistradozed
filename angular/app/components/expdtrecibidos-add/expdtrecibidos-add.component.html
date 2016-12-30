@@ -19,11 +19,7 @@
       <div class="form-group" ng-class="{ 'has-error': adjuntarForm.nfolios.$invalid && ( vm.formSubmitted || adjuntarForm.nfolios.$touched) }">
         <label for="inputPassword3" class="col-sm-3 control-label">N° folios</label>
         <div class="col-sm-2">
-          <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+          <input type="number" class="form-control" ng-model="vm.nfolios" name="nfolios" placeholder="N°">
           <p ng-show="adjuntarForm.nfolios.$error.required && ( vm.formSubmitted || adjuntarForm.nfolios.$touched)" class="help-block">Es obligatorio.</p>
         </div>
       </div>
@@ -52,7 +48,7 @@
   <h1>Expedientes <small>Modulo de Registro de Expedientes</small></h1>
   <ol class="breadcrumb">
     <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a ui-sref="app.remitenteslist">Lista de Expedientes Recibidos</a></li>
+    <li><a ui-sref="app.expdtrecibidoslist">Lista de Expedientes Recibidos</a></li>
     <li class="active">Crear un nuevo Expediente</li>
   </ol>
 </section>
@@ -72,10 +68,8 @@
             <div class="form-group col-xs-12 col-md-6" ng-class="{ 'has-error': expedienteForm.origen.$invalid && ( vm.formSubmitted || expedienteForm.origen.$touched) }">
               <label for="inputPassword3" class="col-sm-4 control-label">Origen</label>
               <div class="col-sm-6">
-                <select class="form-control">
-                <option>Interno</option>
-                <option>Externo</option>
-              </select>
+                <select class="form-control" name="origen" ng-model="vm.origen" ng-options="origen.id as origen.descripcion for origen in vm.origenes" required>
+                </select>
               </div>
             </div>
             <div class="form-group col-xs-12 col-md-6" ng-class="{ 'has-error': expedienteForm.anio.$invalid && ( vm.formSubmitted || expedienteForm.anio.$touched) }">
@@ -103,13 +97,9 @@
             <div class="form-group col-xs-12 col-md-6" ng-class="{ 'has-error': expedienteForm.tdoc.$invalid && ( vm.formSubmitted || expedienteForm.tdoc.$touched) }">
               <label for="inputPassword3" class="col-sm-4 control-label">Tipo Doc.</label>
               <div class="col-sm-6">
-                <select class="form-control">
-                <option>Solicitud</option>
-                <option>Informe</option>
-                <option>Memo</option>
-                <option>Notificación</option>
-                <option>option 5</option>
-              </select>
+                <select class="form-control" name="tdoc" ng-model="vm.tdoc" ng-options="tdoc.id as tdoc.descripcion for tdoc in vm.tipodocs" required>
+                  <option value=""> Elegir Tipo </option>
+                </select>
                 <p ng-show="expedienteForm.tdoc.$error.required && ( vm.formSubmitted || expedienteForm.tdoc.$touched)" class="help-block">Es obligatorio.</p>
               </div>
             </div>
@@ -122,8 +112,8 @@
             <div class="form-group col-xs-12 col-md-8" ng-class="{ 'has-error': expedienteForm.entorigen.$invalid && ( vm.formSubmitted || expedienteForm.entorigen.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Entidad de Origen</label>
               <div class="col-sm-9">
-                <select class="form-control" name="entorigen" ng-model="vm.entorigen" ng-options="entidad.id as entidad.razonSocial for entidad in entis track by entidad.id" required>
-                  <option value="">-- Elegir --</option>
+                <select class="form-control" name="entorigen" ng-model="vm.entorigen" ng-options="entidad.id as entidad.razonSocial for entidad in vm.entis" required>
+                  <option value="">Elegir Entidad</option>
                 </select>
                 <p ng-show="expedienteForm.entorigen.$error.required && ( vm.formSubmitted || expedienteForm.entorigen.$touched)" class="help-block">Es obligatorio.</p>
               </div>
@@ -138,8 +128,8 @@
             <div class="form-group col-xs-12 col-md-8" ng-class="{ 'has-error': expedienteForm.destinatario.$invalid && ( vm.formSubmitted || expedienteForm.destinatario.$touched) }">
               <label for="inputPassword3" class="col-sm-3 control-label">Dirigido a</label>
               <div class="col-sm-9">
-                <select class="form-control" name="destinatario" ng-model="vm.destinatario" ng-options="oficina.id as oficina.nombre for oficina in oficinas track by oficina.id" required>
-                  <option value="">-- Elegir --</option>
+                <select class="form-control" name="destinatario" ng-model="vm.destinatario" ng-options="oficina.id as oficina.nombre for oficina in vm.oficinas track by oficina.id" required>
+                  <option value=""> Elegir Destino</option>
                 </select>
                 <p ng-show="expedienteForm.destinatario.$error.required && ( vm.formSubmitted || expedienteForm.destinatario.$touched)" class="help-block">Es obligatorio.</p>
               </div>
@@ -148,10 +138,7 @@
               <label for="inputPassword3" class="col-sm-3 control-label">Procedimiento</label>
               <div class="col-sm-9">
                 <select class="form-control">
-                <option>Procedimiento 1</option>
-                <option>Procedimiento 2</option>
-                <option>Procedimiento 3</option>
-                <option>Procedimiento 4</option>
+                <option value=""> Elegir Procedimiento</option>
               </select>
                 <p ng-show="expedienteForm.proc.$error.required && ( vm.formSubmitted || expedienteForm.proc.$touched)" class="help-block">Es obligatorio.</p>
               </div>
@@ -196,7 +183,7 @@
             </div>
           </div>
           <div class="box-footer">
-            <a ui-sref="app.remitenteslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
+            <a ui-sref="app.expdtrecibidoslist" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Volver</a>
             <button type="submit" class="btn btn-primary pull-right">Generar</button>
           </div>
         </form>
